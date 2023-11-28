@@ -1,0 +1,270 @@
+{
+	"info": {
+		"_postman_id": "8f655020-35de-4689-a22a-eacd1d8644e2",
+		"name": "Doctor Management Service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22769631"
+	},
+	"item": [
+		{
+			"name": "Create Doctor",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": ".",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "a",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "acce",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user_type\": \"doctor\",\n    \"first_name\": \"Johnny\",\n    \"last_name\": \"Doe\",\n    \"phone_number\": \"555-1231\",\n    \"email\": \"john.doe@example.com\",\n    \"encoded_password\": \"some_encoded_password\",\n    \"encoded_ssn\": \"some_encoded_ssn\",\n    \"address_id\": \"A123\",\n    \"insurance_number\": \"INS123456\",\n    \"insurance_provider\": \"HealthCare Inc.\",\n    \"date_of_birth\": \"1980-01-01\",\n    \"address_line_1\": \"123 Main St\",\n    \"address_line_2\": \"Apt 4\",\n    \"city\": \"Anytown\",\n    \"state\": \"Anystate\",\n    \"zip_code\": \"12345\",\n    \"country\": \"USA\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/doctor/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"doctor",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update doctor",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "acce",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YTou"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Johnny\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/doctor/Jb1fpDSrvRRUrcr4mM",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"doctor",
+						"Jb1fpDSrvRRUrcr4mM"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search doctor",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "acce",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YTou"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"first_name\": \"Johnny\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/doctor/search",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"doctor",
+						"search"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get doctor",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": ".",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "a",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/doctor/Jb1fpDSrvRRUrcr4mM",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"doctor",
+						"Jb1fpDSrvRRUrcr4mM"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get doctor address",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YTou"
+					}
+				],
+				"url": {
+					"raw": "http://127.0.0.1:5000/address/RMgNGUjuCFOqifTdx8/doctor/Jb1fpDSrvRRUrcr4mM",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"address",
+						"RMgNGUjuCFOqifTdx8",
+						"doctor",
+						"Jb1fpDSrvRRUrcr4mM"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update address",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YTou"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"address_line_1\": \"guess my address\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:5000/address/RMgNGUjuCFOqifTdx8/doctor/Jb1fpDSrvRRUrcr4mM",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"address",
+						"RMgNGUjuCFOqifTdx8",
+						"doctor",
+						"Jb1fpDSrvRRUrcr4mM"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

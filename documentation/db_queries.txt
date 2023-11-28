@@ -1,0 +1,2 @@
+db.doctors.createIndex({"email": 1}, { unique: true })
+db.doctors.createIndex({"phone_number": 1}, { unique: true })
