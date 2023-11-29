@@ -158,3 +158,6 @@ class DoctorManager:
         if not request_payload.country or not request_payload.country.strip():
             raise InvalidPayloadException(ErrorStatusCode.DOCTOR_CREATION_FAILED,
                                           'Request contains an invalid country.')
+
+    def get_doctor_by_credentials(self, email, password):
+        return self.doctor_dao.get_doctor_by_credentials(email, password)

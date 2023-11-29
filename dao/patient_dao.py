@@ -49,3 +49,17 @@ class PatientDao(BaseDao):
         updated_patient = self.patient_collection.find_one({'_id': patient_id})
 
         return Patient.from_dict(updated_patient)
+
+    def get_patient_by_credentials(self, email, password):
+        query = {'email': email, 'encoded_password': password}
+
+        found_documents = super().search(query, None, None, None, None)
+
+        if found_documents is None:
+            raise Exception("Document not found")
+
+        doctors = []
+        for document in found_documents:
+            doctors.append(Patient.from_dict(document))
+
+        return doctors

@@ -35,3 +35,5 @@ class SuccessStatusCode(BaseStatusCode):
 
     DOCTOR_REVIEW_CREATION_SUCCESS = {"status_code": 1020, "status_message": "Successfully created doctor review"}
     DOCTOR_RATING_RETRIEVAL_SUCCESS = {"status_code": 1021, "status_message": "Successfully retrieved doctor rating"}
+
+    SESSION_CREATE_SUCCESS = {"status_code": 4031, "status_message": "Successfully created session token"}
