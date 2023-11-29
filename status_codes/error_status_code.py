@@ -34,3 +34,5 @@ class ErrorStatusCode(BaseStatusCode):
     PATIENT_DATA_RETRIEVAL_FAILED = {"status_code": 4028, "status_message": "Patient data retrieval failed"}
     PATIENT_ADDRESS_UPDATE_FAILED = {"status_code": 4029, "status_message": "Patient address update failed"}
     PATIENT_ADDRESS_RETRIEVAL_FAILED = {"status_code": 4030, "status_message": "Patient address retrieval failed"}
+
+    SESSION_CREATE_FAILED = {"status_code": 4031, "status_message": "session creation failed"}

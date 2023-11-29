@@ -43,3 +43,17 @@ class DoctorDao(BaseDao):
 
     def update_doctor(self, doctor_id, doctor):
         return super().update(doctor_id, doctor)
+
+    def get_doctor_by_credentials(self, email, password):
+        query = {'email': email, 'encoded_password': password}
+
+        found_documents = super().search(query, None, None, None, None)
+
+        if found_documents is None:
+            raise Exception("Document not found")
+
+        doctors = []
+        for document in found_documents:
+            doctors.append(Doctor.from_dict(document))
+
+        return doctors
