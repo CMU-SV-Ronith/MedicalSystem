@@ -16,8 +16,8 @@ def create_doctor():
     return doctor_controller.create_doctor(request)
 
 
-@jwt_and_user_type_required(UserType.DOCTOR)
 @blueprint.route('/<doctor_id>', methods=["PATCH"])
+@jwt_and_user_type_required(UserType.DOCTOR)
 def update_doctor(doctor_id):
     return doctor_controller.update_doctor(doctor_id, request)
 

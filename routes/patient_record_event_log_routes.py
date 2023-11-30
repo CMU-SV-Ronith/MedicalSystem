@@ -8,7 +8,7 @@ blueprint = Blueprint('Patient Record Event Log Routes Blueprint', __name__)
 patient_record_event_log_controller = PatientRecordEventLogController()
 
 
-@jwt_and_user_type_required(UserType.DOCTOR)
 @blueprint.route('/<patient_record_id>')
+@jwt_and_user_type_required(UserType.DOCTOR)
 def get_patient_record_event_log(patient_record_id):
     return patient_record_event_log_controller.get_patient_record_event_log(patient_record_id)

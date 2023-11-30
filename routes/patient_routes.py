@@ -8,25 +8,25 @@ blueprint = Blueprint('Patient Routes Blueprint', __name__)
 patient_controller = PatientController()
 
 
-@jwt_and_user_type_required(UserType.PATIENT)
 @blueprint.route('/', methods=["POST"])
+@jwt_and_user_type_required(UserType.PATIENT)
 def create_patient():
     return patient_controller.create_patient(request)
 
 
-@jwt_and_user_type_required(UserType.PATIENT)
 @blueprint.route('/<patient_id>', methods=["PATCH"])
+@jwt_and_user_type_required(UserType.PATIENT)
 def update_patient(patient_id):
     return patient_controller.update_patient(patient_id, request)
 
 
-@jwt_and_user_type_required(UserType.DOCTOR)
 @blueprint.route('/<patient_id>', methods=["GET"])
+@jwt_and_user_type_required(UserType.DOCTOR)
 def get_patient(patient_id):
     return patient_controller.get_patient(patient_id)
 
 
-@jwt_and_user_type_required(UserType.DOCTOR)
 @blueprint.route('/search', methods=["GET"])
+@jwt_and_user_type_required(UserType.DOCTOR)
 def search_patient():
     return patient_controller.search_patient(request)

@@ -10,14 +10,14 @@ doctor_address_controller = DoctorAddressController()
 
 
 # UPDATE: taking doctor id as path param
-@jwt_and_user_type_required(UserType.DOCTOR)
 @blueprint.route('/<address_id>/doctor/<doctor_id>', methods=["PATCH"])
+@jwt_and_user_type_required(UserType.DOCTOR)
 def update_doctor_address(address_id, doctor_id):
     return doctor_address_controller.update_doctor_address(address_id, doctor_id, request)
 
 
 # UPDATE: taking doctor id as path param
-@jwt_and_user_type_required(UserType.DOCTOR)
 @blueprint.route('/<address_id>/doctor/<doctor_id>', methods=["GET"])
+@jwt_and_user_type_required(UserType.DOCTOR)
 def get_doctor_address(address_id, doctor_id):
     return doctor_address_controller.get_doctor_address(address_id, doctor_id)

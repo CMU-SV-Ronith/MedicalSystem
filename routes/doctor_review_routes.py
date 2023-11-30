@@ -8,13 +8,13 @@ blueprint = Blueprint('Doctor Reviews Blueprint', __name__)
 doctor_review_controller = DoctorReviewController()
 
 
-@jwt_and_user_type_required(UserType.PATIENT)
 @blueprint.route('/add', methods=["POST"])
+@jwt_and_user_type_required(UserType.PATIENT)
 def create_review():
     return doctor_review_controller.create_review(request)
 
 
-@jwt_and_user_type_required(UserType.PATIENT)
 @blueprint.route('/getRating/<doctor_id>', methods=["GET"])
+@jwt_and_user_type_required(UserType.PATIENT)
 def get_doctor_rating(doctor_id):
     return doctor_review_controller.get_doctor_rating(doctor_id)

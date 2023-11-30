@@ -52,8 +52,13 @@ class DoctorDao(BaseDao):
         if found_documents is None:
             raise Exception("Document not found")
 
+        found_documents = list(found_documents)
+
+        if len(found_documents) == 0:
+            return None
+
         doctors = []
         for document in found_documents:
             doctors.append(Doctor.from_dict(document))
 
-        return doctors
+        return doctors[0]
