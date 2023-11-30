@@ -13,3 +13,7 @@ class BaseResponse:
             "count": self.count,
             "data": [member.to_dict() if hasattr(member, 'to_dict') else member for member in self.data]
         }
+
+    @classmethod
+    def from_error_code(cls, base_status_response):
+        return cls(base_status_response.value['status_code'], base_status_response.value['status_message'], 0, None)

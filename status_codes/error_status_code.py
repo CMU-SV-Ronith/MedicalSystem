@@ -36,3 +36,4 @@ class ErrorStatusCode(BaseStatusCode):
     PATIENT_ADDRESS_RETRIEVAL_FAILED = {"status_code": 4030, "status_message": "Patient address retrieval failed"}
 
     SESSION_CREATE_FAILED = {"status_code": 4031, "status_message": "session creation failed"}
+    INVALID_BEARER_TOKEN = {"status_code": 4032, "status_message": "Bearer token in invalid"}
