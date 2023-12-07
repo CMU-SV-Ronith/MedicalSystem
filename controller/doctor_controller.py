@@ -64,3 +64,15 @@ class DoctorController(BaseController):
         except Exception as e:
             response = DoctorResponse.of_error(ErrorStatusCode.DOCTOR_DATA_RETRIEVAL_FAILED, str(e))
             return make_response(jsonify(response.to_dict()), 500)
+
+    def get_doctor_and_doctor_hours(self, doctor_id):
+        try:
+            doctor = self.doctor_manager.get_doctor_and_doctor_hours(doctor_id)
+            response = DoctorResponse(SuccessStatusCode.RETRIEVED_DOCTOR_DATA_SUCCESS, 1, [doctor])
+            return make_response(jsonify(response.to_dict()), 200)
+        except ErpBaseException as e:
+            response = DoctorResponse.of_error(e.error_status_code, str(e))
+            return make_response(jsonify(response.to_dict()), e.http_status_code)
+        except Exception as e:
+            response = DoctorResponse.of_error(ErrorStatusCode.DOCTOR_DATA_RETRIEVAL_FAILED, str(e))
+            return make_response(jsonify(response.to_dict()), 500)

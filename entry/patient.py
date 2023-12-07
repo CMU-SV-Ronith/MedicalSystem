@@ -18,6 +18,7 @@ class Patient(BaseClass):
         self.address_id = address_id
         self.insurance_number = insurance_number
         self.insurance_provider = insurance_provider
+        self.address = None
 
         if isinstance(date_of_birth, datetime.date) and not isinstance(date_of_birth, datetime.datetime):
             self.date_of_birth = datetime.datetime.combine(date_of_birth, datetime.time.min)

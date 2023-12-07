@@ -21,6 +21,7 @@ class Doctor(BaseClass):
         self.npi = npi
         self.region = region
         self.insurance_provider = insurance_provider
+        self.doctor_hours = None
 
         if isinstance(date_of_birth, datetime.date) and not isinstance(date_of_birth, datetime.datetime):
             self.date_of_birth = datetime.datetime.combine(date_of_birth, datetime.time.min)
@@ -39,6 +40,7 @@ class Doctor(BaseClass):
             "address_id": self.address_id,
             "insurance_number": self.insurance_number,
             "insurance_provider": self.insurance_provider,
+            "doctor_hours": self.doctor_hours,
             "date_of_birth": self.date_of_birth.isoformat() if self.date_of_birth else None
         }
 

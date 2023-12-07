@@ -21,7 +21,7 @@ class PatientDao(BaseDao):
 
         return patient
 
-    def get_patient(self, patient_id):
+    def get_patient(self, patient_id) -> Patient:
         found_document = self.collection.find_one({'_id': patient_id})
 
         if found_document is None:

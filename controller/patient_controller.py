@@ -63,3 +63,16 @@ class PatientController(BaseController):
         except Exception as e:
             response = PatientResponse.of_error(ErrorStatusCode.PATIENT_DATA_RETRIEVAL_FAILED, str(e))
             return make_response(jsonify(response.to_dict()), 500)
+
+    def get_detailed_patient_info(self, patient_id):
+        try:
+
+            patient = self.patient_manager.get_detailed_patient_info(patient_id)
+            response = PatientResponse(SuccessStatusCode.RETRIEVED_PATIENT_DATA_SUCCESS, 1, [patient])
+            return make_response(jsonify(response.to_dict()), 200)
+        except ErpBaseException as e:
+            response = PatientResponse.of_error(e.error_status_code, str(e))
+            return make_response(jsonify(response.to_dict()), e.http_status_code)
+        except Exception as e:
+            response = PatientResponse.of_error(ErrorStatusCode.PATIENT_DATA_RETRIEVAL_FAILED, str(e))
+            return make_response(jsonify(response.to_dict()), 500)

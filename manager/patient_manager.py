@@ -86,6 +86,12 @@ class PatientManager:
     def get_patient(self, patient_id):
         return self.patient_dao.get_patient(patient_id).to_json()
 
+    def get_detailed_patient_info(self, patient_id) -> Patient:
+        patient = self.patient_dao.get_patient(patient_id)
+        patient.address = self.address_dao.get_address_for_id(patient.address_id)
+
+        return patient
+
     def search_patient(self, request_payload):
         return self.patient_dao.search_patient(request_payload)
 

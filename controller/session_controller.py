@@ -25,3 +25,7 @@ class SessionController:
         except Exception as e:
             response = SessionResponse.of_error(ErrorStatusCode.SESSION_CREATE_FAILED, str(e))
             return make_response(jsonify(response.to_dict()), 500)
+
+    def delete_session(self):
+        response = SessionResponse(SuccessStatusCode.SESSION_DELETION_SUCCESS, 0, None)
+        return make_response(jsonify(response.to_dict()), 200)

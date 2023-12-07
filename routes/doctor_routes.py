@@ -32,3 +32,9 @@ def get_doctor(doctor_id):
 @blueprint.route('/search', methods=["GET"])
 def search_doctor():
     return doctor_controller.search_doctor(request)
+
+
+@jwt_and_user_type_required(UserType.DOCTOR)
+@blueprint.route('/getDoctorAndDoctorHours/<doctor_id>', methods=["GET"])
+def get_doctor_and_doctor_hours(doctor_id):
+    return doctor_controller.get_doctor_and_doctor_hours(doctor_id)

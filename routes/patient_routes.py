@@ -30,3 +30,8 @@ def get_patient(patient_id):
 @jwt_and_user_type_required(UserType.DOCTOR)
 def search_patient():
     return patient_controller.search_patient(request)
+
+@blueprint.route('/getDetailedPatientInfo/<patient_id>', methods=["GET"])
+@jwt_and_user_type_required(UserType.PATIENT)
+def get_detailed_patient_info(patient_id):
+    return patient_controller.get_detailed_patient_info(patient_id)

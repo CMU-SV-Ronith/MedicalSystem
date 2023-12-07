@@ -4,6 +4,7 @@ from entry.address import Address
 from entry.doctor import Doctor
 from exception.invalid_payload_exception import InvalidPayloadException
 from manager.doctor_address_manager import DoctorAddressManager
+from manager.doctor_hours_manager import DoctorHoursManager
 from status_codes.error_status_code import ErrorStatusCode
 
 
@@ -13,6 +14,7 @@ class DoctorManager:
         self.doctor_dao = DoctorDao()
         self.address_dao = AddressDao()
         self.doctor_address_manager = DoctorAddressManager()
+        self.doctor_hours_manager = DoctorHoursManager()
 
     def create_doctor(self, request_payload):
         self.validate_create_payload(request_payload)
@@ -161,3 +163,10 @@ class DoctorManager:
 
     def get_doctor_by_credentials(self, email, password):
         return self.doctor_dao.get_doctor_by_credentials(email, password)
+
+    def get_doctor_and_doctor_hours(self, doctor_id) -> Doctor:
+        doctor = self.doctor_dao.get_doctor(doctor_id)
+        doctor.doctor_hours = self.doctor_hours_manager.get_doctor_hours(doctor_id)
+        # [doctor_hour.to_json() for doctor_hour in self.doctor_hours_manager.get_doctor_hours(doctor_id)]
+
+        return doctor
